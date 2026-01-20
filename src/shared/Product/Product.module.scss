@@ -1,0 +1,108 @@
+.product{
+    width: 210px;
+    padding: 30px;
+    border: 1px solid var(--gray);
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    transition: .4s;
+    margin-left: 40px;
+    margin-top: 52px;
+
+    &:hover{
+        box-shadow: 0px 14px 30px 0px #0000000D;
+        border-color: #F8F8F8;
+        transform: translateY(-10px);
+    }
+
+    button{
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--gray);
+        border-radius: 8px;
+        background: none;
+        transition: .4s;
+    }
+}
+
+.productName{
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.productBottom{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.productPriceLabel{
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--gray);
+}
+
+.productPriceValue{
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.productAddButton{
+    &:hover{
+        background: var(--green);
+        border-color: var(--green);
+
+        & svg{
+            fill: var(--white);
+        }
+    }
+
+    & svg{
+        fill: var(--gray);
+        transition: fill .4s;
+    }
+}
+
+.productAddFavorites{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+
+    & svg{
+        stroke: var(--gray);
+        fill: none;
+        transition: .4s;
+    }
+
+    &:hover{
+        background: var(--pink);
+        border-color: var(--pink);
+
+        & svg{
+            stroke: var(--red);
+            fill: var(--red);
+        }
+    }
+}
+
+.productAddFavoritesActive{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+
+    background: var(--pink) !important;
+    border-color: var(--pink) !important;
+
+    & svg{
+        stroke: var(--red);
+        fill: var(--red);
+    }
+}

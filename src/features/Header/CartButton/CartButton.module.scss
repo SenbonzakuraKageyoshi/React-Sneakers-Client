@@ -1,0 +1,25 @@
+.cartButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--gray);
+    transition: .4s;
+
+    & svg{
+        transition: .4s;
+        stroke: var(--gray);
+    }
+
+    &:hover{
+        color: var(--gray-hover);
+
+        & svg{
+            stroke: var(--gray-hover);
+        }
+    }
+
+    & svg{
+        margin-right: 8px;
+    }
+}

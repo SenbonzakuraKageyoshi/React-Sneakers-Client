@@ -1,0 +1,43 @@
+.headerContainer{
+    max-width: 1040px;
+    padding: 0px 20px;
+    margin: 0 auto;
+}
+
+.logoTextItem:first-child{
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: var(--black);
+}
+
+.logoTextItem:last-child{
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.headerLogoLink{
+    display: flex;
+    align-items: center;
+}
+
+.logoText{
+    margin-left: 15px;
+}
+
+.header{
+    padding: 30px 0px;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.headerNav{
+    display: flex;
+    align-items: center;
+}
+
+.headerContent{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

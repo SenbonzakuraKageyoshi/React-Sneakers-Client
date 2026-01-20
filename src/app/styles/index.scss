@@ -1,0 +1,37 @@
+@use './vendors/reset.scss';
+@use './vendors/fonts.scss';
+@use './vendors/vars.scss';
+
+.container{
+    max-width: 1000px;
+    padding: 0px 20px;
+    margin: 0 auto;
+}
+
+.mainContent{
+    padding-top: 25px;
+}
+
+body{
+    position: relative;
+}
+
+input{
+    border: 1px solid var(--gray);
+    padding: 0px 18px;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--gray);
+    border-radius: 10px;
+    transition: .4s;
+
+    &::placeholder{
+        color: #E4E4E4;
+    }
+
+    &:focus,  &:hover{
+        outline: none;
+       border-color:var(--gray-hover); 
+       color: var(--gray-hover);
+    }
+}
