@@ -6,15 +6,18 @@
     top: 0;
     right: 0;
     z-index: 3;
+    padding: 90px 30px 30px 30px;
 }
 
-.cartBackdrop{
+.cartTitleWrapper{
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    background: #000;
-    opacity: 0.5;
-    z-index: 2;
+    top: 30px;
+    left: 30px;
+}
+
+.cartContent{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

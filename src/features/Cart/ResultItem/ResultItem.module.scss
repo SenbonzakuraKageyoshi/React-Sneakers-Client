@@ -1,0 +1,19 @@
+.resultItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:not(:first-child){
+        margin-top: 20px;
+    }
+}
+
+.resultItemName{
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--gray-hover);
+}
+
+.resultItemValue{
+    font-weight: 700;
+}

@@ -1,0 +1,19 @@
+.cartMessage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 80%;
+}
+
+.carMessageTitleWrapper{
+    margin-top: 20px;
+}
+
+.cartMessageText{
+    margin-top: 10px;
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--gray);
+}
