@@ -35,3 +35,13 @@ input{
        color: var(--gray-hover);
     }
 }
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--green);
+    color: var(--white);
+    border-radius: 18px;
+    padding: 18px 30px;
+}
