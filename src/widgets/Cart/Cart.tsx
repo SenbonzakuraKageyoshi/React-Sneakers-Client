@@ -5,6 +5,7 @@ import ResultItem from '../../features/Cart/ResultItem/ResultItem';
 import CartMessage from '../../features/Cart/CartMessage/CartMessage';
 import styles from './Cart.module.scss';
 import { cartVariants } from '../../entities/Cart/data';
+import CartProduct from '../../features/Cart/CartProduct/CartProduct';
 
 type Cart = {
   toggleIsOpened: (value: boolean) => void;
@@ -22,7 +23,7 @@ const Cart = ({ toggleIsOpened }: Cart) => {
         <div className={styles.cartTitleWrapper}>
           <CartTitle title="Корзина"/>
         </div>
-        {isSuccess && <CartMessage toggleIsOpened={toggleIsOpened} {...cartVariants[1]}/>}
+        {/* {isSuccess && <CartMessage toggleIsOpened={toggleIsOpened} {...cartVariants[1]}/>}
         {
           products.length
           ?
@@ -35,7 +36,8 @@ const Cart = ({ toggleIsOpened }: Cart) => {
           </div>
           :
           !isSuccess && <CartMessage toggleIsOpened={toggleIsOpened} {...cartVariants[0]}/>
-        }
+        } */}
+        <CartProduct/>
     </div>
     </>
   )

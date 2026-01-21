@@ -1,11 +1,10 @@
 import SectionHeader from "../../features/Header/SectionHeader/SectionHeader"
 import ProductList from "../../shared/ProductList/ProductList";
-import products from "../../entities/Catalog/data.json";
 import { useState } from "react";
 
 const Catalog = () => {
 
-  const [productsList, setProductsList] = useState(products);
+  const [productsList, setProductsList] = useState([{id: 1, title: 'title', price: 12990, image: ''}]);
 
   const [search, setSearch] = useState('');
 
