@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CartShadow from '../../features/Cart/CartShadow/CartShadow';
 import CartTitle from '../../features/Cart/CartTitle/CartTitle';
 import ResultItem from '../../features/Cart/ResultItem/ResultItem';
 import CartMessage from '../../features/Cart/CartMessage/CartMessage';
 import styles from './Cart.module.scss';
 import { cartVariants } from '../../entities/Cart/data';
-import CartProduct from '../../features/Cart/CartProduct/CartProduct';
+import CartProductList from '../../features/Cart/CartProductList/CartProductList';
+import { cartService } from '../../service/CartService/CartService';
+import { type CartProduct } from '../../shared/types/Products';
+
 
 type Cart = {
   toggleIsOpened: (value: boolean) => void;
@@ -13,8 +16,18 @@ type Cart = {
 
 const Cart = ({ toggleIsOpened }: Cart) => {
 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<null | CartProduct[]>(null);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  const getCartProducts = async () => {
+    return await cartService.getCartProducts()
+  };
+
+  const totalPrice = products?.reduce((accumulator, product) => accumulator + product.Product.price, 0) || 0;
+
+  useEffect(() => {
+    getCartProducts().then((data) => setProducts(data));
+  }, [])
 
   return (
     <>
@@ -23,21 +36,21 @@ const Cart = ({ toggleIsOpened }: Cart) => {
         <div className={styles.cartTitleWrapper}>
           <CartTitle title="Корзина"/>
         </div>
-        {/* {isSuccess && <CartMessage toggleIsOpened={toggleIsOpened} {...cartVariants[1]}/>}
+        {isSuccess && <CartMessage toggleIsOpened={toggleIsOpened} {...cartVariants[1]}/>}
         {
-          products.length
+          products?.length
           ?
           <div className={styles.cartContent}>
+            <CartProductList products={products}/>
             <div></div>
             <div>
-              <ResultItem name='Итого:' value={`21 498 руб.`}/>
-              <ResultItem name='Налог 5%:' value={`1074 руб.`}/>
+              <ResultItem name='Итого:' value={totalPrice}/>
+              <ResultItem name='Налог 5%:' value={totalPrice * 0.05}/>
             </div>
           </div>
           :
           !isSuccess && <CartMessage toggleIsOpened={toggleIsOpened} {...cartVariants[0]}/>
-        } */}
-        <CartProduct/>
+        }
     </div>
     </>
   )

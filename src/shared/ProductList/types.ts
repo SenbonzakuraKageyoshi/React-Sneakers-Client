@@ -1,5 +1,5 @@
-import { type ProductType } from "../types/ProductType";
+import { type Product } from "../types/Products";
 
 export type ProductList = {
-    products: ProductType[];
+    products: Product[];
 }

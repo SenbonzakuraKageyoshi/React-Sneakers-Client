@@ -1,5 +1,5 @@
 import type React from "react";
-import type { ProductType } from "../../../shared/types/ProductType";
+import type { Product } from "../../../shared/types/Products";
 
 export type SectionHeader = {
     title: string;
