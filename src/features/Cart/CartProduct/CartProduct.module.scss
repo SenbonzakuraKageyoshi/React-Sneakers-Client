@@ -25,6 +25,10 @@
     padding: 30px 20px;
     border-radius: 20px;
     border: 1px solid var(--gray);
+
+    &:not(:first-child){
+        margin-top: 20px;
+    }
 }
 
 .cartProductContent{

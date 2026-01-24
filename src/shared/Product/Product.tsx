@@ -1,13 +1,13 @@
 import styles from './Product.module.scss';
 import ProductImg from '../../assets/png/product.png';
 import { type Product as ProductType } from '../types/Products';
-import { catalogService } from '../../service/CatalogService/CatalogService';
 import { formatPrice } from '../utils/formatPrice';
+import { cartService } from '../../service/CartService/CartService';
 
 const Product = ({ id, title, price, image }: ProductType) => {
 
-  const onAddToCartHandler = () => {
-    catalogService.addToCart(id)
+  const onAddToCartHandler = async () => {
+    await cartService.addToCart(id)
   };
 
   return (

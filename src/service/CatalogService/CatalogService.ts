@@ -8,12 +8,6 @@ class CatalogService {
 
         return data;
     }
-
-    addToCart = async (ProductId: number): Promise<Message> => {
-        const { data } =  await api.post<Message>('/cart/add', { ProductId })
-
-        return data;
-    };
 }
 
 export const catalogService = new CatalogService();

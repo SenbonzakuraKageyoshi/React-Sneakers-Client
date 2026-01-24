@@ -3,13 +3,14 @@ import CartProduct from "../CartProduct/CartProduct"
 
 type CartProductList = {
   products: CartProductType[]
+  removeCartProduct: (id: number) => void; 
 };
 
-const CartProductList = ({ products }: CartProductList) => {
+const CartProductList = ({ products, removeCartProduct }: CartProductList) => {
   return (
     <ul className="cartProductList">
       {products.map((product) => (
-        <CartProduct {...product} key={product.id}/>
+        <CartProduct {...product} removeCartProduct={removeCartProduct} key={product.id}/>
       ))}
     </ul>
   )

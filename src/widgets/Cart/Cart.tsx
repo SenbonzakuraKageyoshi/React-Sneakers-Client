@@ -8,6 +8,7 @@ import { cartVariants } from '../../entities/Cart/data';
 import CartProductList from '../../features/Cart/CartProductList/CartProductList';
 import { cartService } from '../../service/CartService/CartService';
 import { type CartProduct } from '../../shared/types/Products';
+import { ordersService } from '../../service/OrdersService/OrdersService';
 
 
 type Cart = {
@@ -22,6 +23,19 @@ const Cart = ({ toggleIsOpened }: Cart) => {
   const getCartProducts = async () => {
     return await cartService.getCartProducts()
   };
+
+  const removeCartProduct = async (id: number) => {
+   await cartService.removeCartProduct(id).then(() => {
+    setProducts((prev) => prev!.filter((e) => e.id !== id))
+   })
+  };
+
+  const createOrder = async () => {
+    await ordersService.createOrder(products!).then(() => {
+      setProducts(null)
+      setIsSuccess(true)
+    })
+  }
 
   const totalPrice = products?.reduce((accumulator, product) => accumulator + product.Product.price, 0) || 0;
 
@@ -41,11 +55,16 @@ const Cart = ({ toggleIsOpened }: Cart) => {
           products?.length
           ?
           <div className={styles.cartContent}>
-            <CartProductList products={products}/>
+            <CartProductList removeCartProduct={removeCartProduct} products={products}/>
             <div></div>
-            <div>
-              <ResultItem name='Итого:' value={totalPrice}/>
-              <ResultItem name='Налог 5%:' value={totalPrice * 0.05}/>
+            <div className={styles.cartBottom}>
+              <div>
+                <ResultItem name='Итого:' value={totalPrice}/>
+                <ResultItem name='Налог 5%:' value={totalPrice * 0.05}/>
+              </div>
+              <button className="button" style={{marginTop: '25px'}} onClick={createOrder}>
+                Оформить заказ
+              </button>
             </div>
           </div>
           :
