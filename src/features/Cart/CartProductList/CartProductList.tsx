@@ -1,5 +1,6 @@
 import { type CartProduct as CartProductType } from "../../../shared/types/Products"
 import CartProduct from "../CartProduct/CartProduct"
+import styles from './CartProductList.module.scss';
 
 type CartProductList = {
   products: CartProductType[]
@@ -8,7 +9,7 @@ type CartProductList = {
 
 const CartProductList = ({ products, removeCartProduct }: CartProductList) => {
   return (
-    <ul className="cartProductList">
+    <ul className={styles.cartProductList}>
       {products.map((product) => (
         <CartProduct {...product} removeCartProduct={removeCartProduct} key={product.id}/>
       ))}

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import CartShadow from '../../features/Cart/CartShadow/CartShadow';
 import CartTitle from '../../features/Cart/CartTitle/CartTitle';
 import ResultItem from '../../features/Cart/ResultItem/ResultItem';
@@ -6,9 +5,7 @@ import CartMessage from '../../features/Cart/CartMessage/CartMessage';
 import styles from './Cart.module.scss';
 import { cartVariants } from '../../entities/Cart/data';
 import CartProductList from '../../features/Cart/CartProductList/CartProductList';
-import { cartService } from '../../service/CartService/CartService';
-import { type CartProduct } from '../../shared/types/Products';
-import { ordersService } from '../../service/OrdersService/OrdersService';
+import { useCart } from '../../hooks/useCart';
 
 
 type Cart = {
@@ -17,31 +14,7 @@ type Cart = {
 
 const Cart = ({ toggleIsOpened }: Cart) => {
 
-  const [products, setProducts] = useState<null | CartProduct[]>(null);
-  const [isSuccess, setIsSuccess] = useState(false);
-
-  const getCartProducts = async () => {
-    return await cartService.getCartProducts()
-  };
-
-  const removeCartProduct = async (id: number) => {
-   await cartService.removeCartProduct(id).then(() => {
-    setProducts((prev) => prev!.filter((e) => e.id !== id))
-   })
-  };
-
-  const createOrder = async () => {
-    await ordersService.createOrder(products!).then(() => {
-      setProducts(null)
-      setIsSuccess(true)
-    })
-  }
-
-  const totalPrice = products?.reduce((accumulator, product) => accumulator + product.Product.price, 0) || 0;
-
-  useEffect(() => {
-    getCartProducts().then((data) => setProducts(data));
-  }, [])
+  const [ products, isSuccess, totalPrice, removeCartProduct, createOrder ] = useCart();
 
   return (
     <>

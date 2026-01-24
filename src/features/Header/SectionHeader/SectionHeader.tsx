@@ -3,11 +3,11 @@ import { type SectionHeader } from './types';
 import SectionTitle from '../../../shared/SectionTitle/SectionTitle';
 import Search from '../../../shared/Search/Search';
 
-const SectionHeader = ({ title, search, setSearch }: SectionHeader) => {
+const SectionHeader = ({ title, search, onSearchInputHandler }: SectionHeader) => {
   return (
     <div className={styles.sectionHeader}>
         <SectionTitle title={title}/>
-        <Search search={search} setSearch={setSearch}/>
+        <Search search={search} onSearchInputHandler={onSearchInputHandler}/>
     </div>
   )
 }
