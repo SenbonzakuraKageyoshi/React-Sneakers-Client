@@ -6,6 +6,7 @@ import styles from './Cart.module.scss';
 import { cartVariants } from '../../entities/Cart/data';
 import CartProductList from '../../features/Cart/CartProductList/CartProductList';
 import { useCart } from '../../hooks/useCart';
+import Loader from '../../shared/Loader/Loader';
 
 
 type Cart = {
@@ -14,7 +15,7 @@ type Cart = {
 
 const Cart = ({ toggleIsOpened }: Cart) => {
 
-  const [ products, isSuccess, totalPrice, removeCartProduct, createOrder ] = useCart();
+  const [ products, isSuccess, isLoading, isError, totalPrice, removeCartProduct, createOrder ] = useCart();
 
   return (
     <>
@@ -23,9 +24,11 @@ const Cart = ({ toggleIsOpened }: Cart) => {
         <div className={styles.cartTitleWrapper}>
           <CartTitle title="Корзина"/>
         </div>
+        {isError && <p>Error</p>}
+        {isLoading && <Loader/>}
         {isSuccess && <CartMessage toggleIsOpened={toggleIsOpened} {...cartVariants[1]}/>}
         {
-          products?.length
+          !isError && !isLoading && products.length
           ?
           <div className={styles.cartContent}>
             <CartProductList removeCartProduct={removeCartProduct} products={products}/>
@@ -41,7 +44,7 @@ const Cart = ({ toggleIsOpened }: Cart) => {
             </div>
           </div>
           :
-          !isSuccess && <CartMessage toggleIsOpened={toggleIsOpened} {...cartVariants[0]}/>
+          !isError && !isLoading && !isSuccess && <CartMessage toggleIsOpened={toggleIsOpened} {...cartVariants[0]}/>
         }
     </div>
     </>

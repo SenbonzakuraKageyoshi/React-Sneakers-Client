@@ -4,19 +4,30 @@ import { cartService } from "../service/CartService/CartService";
 import { ordersService } from "../service/OrdersService/OrdersService";
 
 type useCart = [
-    products: null | CartProduct[],
+    products: CartProduct[],
     isSuccess: boolean,
+    isLoading: boolean,
+    isError: boolean,
     totalPrice: number,
     removeCartProduct: (id: number) => void,
     createOrder: () => void,
 ]
 
 export const useCart = (): useCart => {
-    const [products, setProducts] = useState<null | CartProduct[]>(null);
+    const [products, setProducts] = useState<CartProduct[]>([]);
     const [isSuccess, setIsSuccess] = useState(false);
 
+    const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
+
     useEffect(() => {
-        getCartProducts().then((data) => setProducts(data));
+        getCartProducts().then((data) => {
+          setProducts(data)
+          setIsLoading(false)
+        }).catch(() => {
+          setIsLoading(false)
+          setIsError(true)
+        })
     }, [])
 
     const totalPrice = products?.reduce((accumulator, product) => accumulator + product.Product.price, 0) || 0;
@@ -33,7 +44,7 @@ export const useCart = (): useCart => {
 
     const createOrder = async () => {
       await ordersService.createOrder(products!).then(() => {
-        setProducts(null)
+        setProducts([])
         setIsSuccess(true)
       })
     }
@@ -41,6 +52,8 @@ export const useCart = (): useCart => {
     return [
         products,
         isSuccess,
+        isLoading,
+        isError,
         totalPrice,
         removeCartProduct,
         createOrder

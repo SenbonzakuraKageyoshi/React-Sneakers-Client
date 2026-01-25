@@ -2,16 +2,29 @@ import SectionHeader from "../../features/Header/SectionHeader/SectionHeader"
 import ProductList from "../../shared/ProductList/ProductList";
 import { useCatalog } from "../../hooks/useCatalog";
 import { useSearch } from "../../hooks/useSearch";
+import Loader from "../../shared/Loader/Loader";
 
 const Catalog = () => {
 
-  const [ productsList ] = useCatalog();
+  const [ productsList, isLoading, isError ] = useCatalog();
   const [search, onSearchInputHandler, filteredProducts] = useSearch(productsList);
-  
+
+  const showCatalog = !isError && !isLoading && productsList.length && filteredProducts.length;
+
   return (
     <div className="catalog">
       <SectionHeader title="Все кроссовки" search={search} onSearchInputHandler={onSearchInputHandler}/>
-      {productsList && filteredProducts && <ProductList products={filteredProducts}/>}
+      {
+      isError
+      &&
+      <p>Error</p>
+      }
+      {
+      isLoading
+      &&
+      <Loader/>
+      }
+      {showCatalog && <ProductList products={filteredProducts}/>}
     </div>
   )
 }
