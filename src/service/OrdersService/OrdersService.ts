@@ -6,7 +6,7 @@ const namespace = '/orders';
 
 class OrdersService {
     createOrder = async (products: CartProduct[]): Promise<Message> => {
-        const { data } =  await api.post<Message>(`${namespace}/create`, { products })
+        const { data } = await api.post<Message>(`${namespace}/create`, { products })
 
         return data;
     };

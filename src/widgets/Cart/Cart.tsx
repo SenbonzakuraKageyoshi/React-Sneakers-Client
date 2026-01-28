@@ -15,7 +15,7 @@ type Cart = {
 
 const Cart = ({ toggleIsOpened }: Cart) => {
 
-  const [ products, isSuccess, isLoading, isError, totalPrice, removeCartProduct, createOrder ] = useCart();
+  const { products, isSuccess, isLoading, isError, totalPrice, removeCartProduct, createOrder } = useCart();
 
   return (
     <>

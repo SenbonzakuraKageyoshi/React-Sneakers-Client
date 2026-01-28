@@ -1,6 +1,6 @@
 import styles from './CartButton.module.scss';
 import { type CartButton } from './types';
-import { homeStore } from '../../../entities/HomeStore/HomeStore';
+import { homeStore } from '../../../entities/CartStore/HomeStore';
 
 const CartButton = ({ price }: CartButton) => {
 

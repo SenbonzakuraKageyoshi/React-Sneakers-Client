@@ -2,23 +2,12 @@ import { useState, useEffect } from "react";
 import { type CartProduct } from "../shared/types/Products";
 import { cartService } from "../service/CartService/CartService";
 import { ordersService } from "../service/OrdersService/OrdersService";
+import { useFetch } from "./useFetch";
 
-type useCart = [
-    products: CartProduct[],
-    isSuccess: boolean,
-    isLoading: boolean,
-    isError: boolean,
-    totalPrice: number,
-    removeCartProduct: (id: number) => void,
-    createOrder: () => void,
-]
-
-export const useCart = (): useCart => {
+export const useCart = () => {
     const [products, setProducts] = useState<CartProduct[]>([]);
     const [isSuccess, setIsSuccess] = useState(false);
-
-    const [isLoading, setIsLoading] = useState(true);
-    const [isError, setIsError] = useState(false);
+    const { isLoading, isError, setIsLoading, setIsError } = useFetch();
 
     useEffect(() => {
         getCartProducts().then((data) => {
@@ -49,13 +38,13 @@ export const useCart = (): useCart => {
       })
     }
 
-    return [
-        products,
-        isSuccess,
-        isLoading,
-        isError,
-        totalPrice,
-        removeCartProduct,
-        createOrder
-    ]
+    return {
+      products,
+      isSuccess,
+      isLoading,
+      isError,
+      totalPrice,
+      removeCartProduct,
+      createOrder
+    }
 };

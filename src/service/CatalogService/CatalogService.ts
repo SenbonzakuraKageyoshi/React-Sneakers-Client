@@ -1,4 +1,3 @@
-import { Message } from "../../shared/types/Message";
 import { Product } from "../../shared/types/Products";
 import { api } from "../api";
 

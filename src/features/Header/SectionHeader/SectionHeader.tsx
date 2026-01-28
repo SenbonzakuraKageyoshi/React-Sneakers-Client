@@ -4,6 +4,7 @@ import SectionTitle from '../../../shared/SectionTitle/SectionTitle';
 import Search from '../../../shared/Search/Search';
 
 const SectionHeader = ({ title, search, onSearchInputHandler }: SectionHeader) => {
+  console.log('hdr')
   return (
     <div className={styles.sectionHeader}>
         <SectionTitle title={title}/>

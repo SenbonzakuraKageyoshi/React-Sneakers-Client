@@ -1,6 +1,6 @@
 import Cart from "../../widgets/Cart/Cart"
 import Catalog from "../../widgets/Catalog/Catalog"
-import { homeStore } from "../../entities/HomeStore/HomeStore"
+import { homeStore } from "../../entities/CartStore/HomeStore";
 
 const Home = () => {
 
