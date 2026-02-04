@@ -1,6 +1,6 @@
 import styles from './CartProduct.module.scss';
 import CartProductPreview from '../../../assets/png/product.png';
-import { type CartProduct as CartProductType } from '../../../shared/types/Products';
+import { type Product } from '../../../shared/types/Product';
 import { formatPrice } from '../../../shared/utils/formatPrice';
 import { cartService } from '../../../service/CartService/CartService';
 
@@ -8,14 +8,14 @@ type CartProductFunctions = {
     removeCartProduct: (id: number) => void;
 }
 
-const CartProduct = ({ id, Product, removeCartProduct }: CartProductType & CartProductFunctions) => {
+const CartProduct = ({ id, title, price, removeCartProduct }: Product & CartProductFunctions) => {
   return (
     <li className={styles.cartProduct}>
         <div className={styles.cartProductContent}>
             <img src={CartProductPreview} alt="" width={70} height={70} />
             <div className={styles.cartProductInfo}>
-                <div className={styles.cartProductName}>{Product.title}</div>
-                <p className={styles.cartProductPrice}>{formatPrice(Product.price)}</p>
+                <div className={styles.cartProductName}>{title}</div>
+                <p className={styles.cartProductPrice}>{formatPrice(price)}</p>
             </div>
             <button className={styles.cartProductButton} onClick={() => removeCartProduct(id)}>
                 <svg width="9" height="9" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">

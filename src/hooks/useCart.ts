@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { type CartProduct } from "../shared/types/Products";
+import { type Product } from "../shared/types/Product";
 import { cartService } from "../service/CartService/CartService";
 import { ordersService } from "../service/OrdersService/OrdersService";
 import { useFetch } from "./useFetch";
 
 export const useCart = () => {
-    const [products, setProducts] = useState<CartProduct[]>([]);
+    const [products, setProducts] = useState<Product[]>([]);
     const [isSuccess, setIsSuccess] = useState(false);
     const { isLoading, isError, setIsLoading, setIsError } = useFetch();
 
@@ -19,7 +19,7 @@ export const useCart = () => {
         })
     }, [])
 
-    const totalPrice = products?.reduce((accumulator, product) => accumulator + product.Product.price, 0) || 0;
+    const totalPrice = products?.reduce((accumulator, product) => accumulator + product.price, 0) || 0;
 
     const getCartProducts = async () => {
       return await cartService.getCartProducts()

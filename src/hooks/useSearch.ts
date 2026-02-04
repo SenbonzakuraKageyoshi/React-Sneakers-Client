@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Product } from "../shared/types/Products";
+import { Product } from "../shared/types/Product";
 
 export type useSearch = [string, (value: string) => void, Product[]]
 

@@ -1,5 +1,5 @@
 import type { Message } from "../../shared/types/Message";
-import type { CartProduct } from "../../shared/types/Products";
+import type { CartProduct } from "../../shared/types/Product";
 import { api } from "../api";
 
 const namespace = '/cart';

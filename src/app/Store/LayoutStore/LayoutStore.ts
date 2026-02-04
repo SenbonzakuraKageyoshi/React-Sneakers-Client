@@ -5,7 +5,7 @@ type Store = {
   toggleIsOpened: (value: boolean) => void
 };
 
-export const homeStore = create<Store>()((set) => ({
+export const layoutStore = create<Store>()((set) => ({
   isOpened: false,
   toggleIsOpened: (value) => set(() => ({isOpened: value}))
 }));

@@ -1,5 +1,6 @@
-import { type Product } from "../types/Products";
+import { type Product } from "../types/Product";
 
 export type ProductList = {
     products: Product[];
+    showActions: boolean;
 }

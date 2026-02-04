@@ -1,8 +1,5 @@
-import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './app/App/App.tsx';
+import Router from './app/Router/Router.tsx';
 import './app/styles/index.scss';
 
-createRoot(document.getElementById('root')!).render(
-  <App />
-)
+createRoot(document.getElementById('root')!).render(<Router />)

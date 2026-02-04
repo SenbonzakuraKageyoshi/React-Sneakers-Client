@@ -1,10 +1,10 @@
 import styles from './CartButton.module.scss';
 import { type CartButton } from './types';
-import { homeStore } from '../../../entities/CartStore/HomeStore';
+import { layoutStore } from '../../../app/Store/LayoutStore/LayoutStore';
 
 const CartButton = ({ price }: CartButton) => {
 
-  const { toggleIsOpened } = homeStore()
+  const { toggleIsOpened } = layoutStore();
 
   return (
     <button className={styles.cartButton} onClick={() => toggleIsOpened(true)}>

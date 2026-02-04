@@ -1,4 +1,4 @@
-import { Product } from "../../shared/types/Products";
+import { Product } from "../../shared/types/Product";
 import { api } from "../api";
 
 class CatalogService {

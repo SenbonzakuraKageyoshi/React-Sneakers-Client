@@ -7,13 +7,6 @@ type Product = {
     updatedAt: string;
 }
 
-type CartProduct = {
-    id: number;
-    Product: Product;
-    createdAt: string;
-    updatedAt: string;
-}
-
 export {
-    Product, CartProduct
+    Product
 }
