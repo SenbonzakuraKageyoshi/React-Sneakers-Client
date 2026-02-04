@@ -13,7 +13,7 @@ const Catalog = () => {
     <div className="catalog">
       <SectionHeader title="Все кроссовки" search={search} onSearchInputHandler={onSearchInputHandler}/>
       <FetchStatus isLoading={isLoading} isError={isError}/>
-      {emptyDataCheck(isError, isLoading, products) && <ProductList products={filteredProducts} showActions={true} />}
+      {emptyDataCheck(isError, isLoading, products) && <ProductList products={filteredProducts} showAddButton={true} showAddFavoritesButton={true} />}
     </div>
   )
 }

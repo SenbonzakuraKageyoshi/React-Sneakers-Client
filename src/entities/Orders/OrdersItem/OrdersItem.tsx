@@ -11,7 +11,7 @@ const OrdersItem = ({ createdAt, products }: OrdersItem) => {
   return (
     <div className={styles.ordersItem}>
     <div className={styles.orderData}>Дата заказа: {createdAt.split('T')[0]}</div>
-    <ProductList products={products} showActions={false}/>
+    <ProductList products={products} showAddButton={false} showAddFavoritesButton={false}/>
     </div>
   )
 }

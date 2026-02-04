@@ -5,19 +5,20 @@ import { formatPrice } from '../utils/formatPrice';
 import { cartService } from '../../service/CartService/CartService';
 
 type ProductActions = {
-  showActions: boolean
+  showAddButton: boolean;
+  showAddFavoritesButton: boolean;
 }
 
-const Product = ({ id, title, price, image, showActions }: ProductType & ProductActions) => {
+const Product = (props: ProductType & ProductActions) => {
 
   const onAddToCartHandler = async () => {
-    await cartService.addToCart(id)
+    await cartService.addToCart(props.id)
   };
 
   return (
     <li className={styles.product}>
         {
-        showActions
+        props.showAddFavoritesButton
         &&
         <button className={styles.productAddFavorites}>
           <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -26,14 +27,14 @@ const Product = ({ id, title, price, image, showActions }: ProductType & Product
         </button>
         }
         <img src={ProductImg} alt="" width={133} height={112} className={styles.productPreview}/>
-        <div className={styles.productName}>{title}</div>
+        <div className={styles.productName}>{props.title}</div>
         <div className={styles.productBottom}>
           <div className="productPrice">
             <div className={styles.productPriceLabel}>Цена:</div>
-            <div className={styles.productPriceValue}>{formatPrice(price)}</div>
+            <div className={styles.productPriceValue}>{formatPrice(props.price)}</div>
           </div>
           {
-          showActions
+          props.showAddButton
           &&
           <button className={styles.productAddButton} onClick={onAddToCartHandler}>
             <svg width="11" height="11" viewBox="0 0 11 11" xmlns="http://www.w3.org/2000/svg">
