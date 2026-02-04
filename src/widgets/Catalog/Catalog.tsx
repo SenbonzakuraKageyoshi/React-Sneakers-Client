@@ -2,11 +2,12 @@ import SectionHeader from "../../entities/SectionHeader/SectionHeader"
 import ProductList from "../../shared/ProductList/ProductList";
 import { useSearch } from "../../hooks/useSearch";
 import FetchStatus from "../../shared/FetchStatus/FetchStatus";
-import { useCatalog } from "../../hooks/useCatalog";
 import { emptyDataCheck } from "../../features/EmptyDataCheck/EmptyDataCheck";
+import { useProductsFetch } from "../../hooks/useProductsFetch";
+import { getProducts } from "./utils";
 
 const Catalog = () => {
-  const { products, isLoading, isError } = useCatalog();
+  const { products, isLoading, isError } = useProductsFetch(getProducts);
   const [search, onSearchInputHandler, filteredProducts] = useSearch(products);
 
   return (

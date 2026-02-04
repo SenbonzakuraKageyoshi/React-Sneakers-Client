@@ -1,19 +1,14 @@
 import { useState, useEffect } from "react";
 import type { Product } from "../shared/types/Product";
 import { useFetch } from "./useFetch";
-import { catalogService } from "../service/CatalogService/CatalogService";
 
-export const useCatalog = () => {
+export const useProductsFetch = (requestFunction : () => Promise<Product[]>) => {
 
     const [products, setProducts] = useState<Product[]>([]);
     const { isLoading, isError, setIsLoading, setIsError } = useFetch();
 
-    const getProducts = async () => {
-        return await catalogService.getProducts();
-    };
-
     useEffect(() => {
-        getProducts()
+        requestFunction()
         .then((data) => {
             setProducts(data)
             setIsLoading(false)
@@ -27,6 +22,7 @@ export const useCatalog = () => {
     return {
         products,
         isLoading,
-        isError
+        isError,
+        setProducts
     }
 };
