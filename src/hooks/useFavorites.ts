@@ -7,7 +7,7 @@ export const useFavorites = () => {
     const { products, isLoading, isError, setProducts } = useProductsFetch(getFavorites);
 
     const removeFromFavorites = async (id: number) => {
-     await favoritesService.removeCartFavorites(id).then(() => {
+     await favoritesService.removeFromFavorites(id).then(() => {
       setProducts((prev) => prev!.filter((e) => e.id !== id))
      })
     };

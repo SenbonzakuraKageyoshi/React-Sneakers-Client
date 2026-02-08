@@ -17,7 +17,7 @@ class FavoritesService {
         return data;
     };
 
-    removeCartFavorites = async (id: number): Promise<Message> => {
+    removeFromFavorites = async (id: number): Promise<Message> => {
         const { data } = await api.post<Message>(`${namespace}/remove`, { id })
 
         return data;
