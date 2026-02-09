@@ -5,4 +5,5 @@ export type SectionHeader = {
     title: string;
     search?: string;
     onSearchInputHandler?: (value: string) => void;
+    showSearch: boolean;
 }

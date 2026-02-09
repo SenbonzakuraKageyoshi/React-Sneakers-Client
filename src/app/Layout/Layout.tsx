@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../widgets/Header/Header';
-import { layoutStore } from '../Store/LayoutStore/LayoutStore';
 import Cart from '../../widgets/Cart/Cart';
 
 type Layout = {
@@ -9,17 +8,17 @@ type Layout = {
 
 const Layout = ({ children }: Layout) => {
 
-  const { isOpened, toggleIsOpened } = layoutStore();
+  const [isCartOpened, setCartIsOpened] = useState(false);
 
   return (
     <>
-    <Header/>
-    <div className="mainContent">
-      <div className="container">
-        { children }
-        {isOpened && <Cart toggleIsOpened={toggleIsOpened}/>}
+    <Header setCartIsOpened={setCartIsOpened}/>
+      <div className="mainContent">
+        <div className="container">
+          { children }
+          {isCartOpened && <Cart setCartIsOpened={setCartIsOpened}/>}
+        </div>
       </div>
-    </div>
     </>
   )
 }

@@ -11,6 +11,12 @@ class CartService {
         return data;
     }
 
+    getCartPrice = async (): Promise<{price: number}> => {
+        const { data } = await api.get<{price: number}>(`${namespace}/get-price`)
+
+        return data;
+    }
+
     addToCart = async (ProductId: number): Promise<Message> => {
         const { data } =  await api.post<Message>(`${namespace}/add`, { ProductId })
 

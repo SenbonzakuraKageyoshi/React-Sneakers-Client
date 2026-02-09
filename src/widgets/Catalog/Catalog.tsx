@@ -15,9 +15,9 @@ const Catalog = () => {
 
   return (
     <div className="catalog">
-      <SectionHeader title="Все кроссовки" search={search} onSearchInputHandler={onSearchInputHandler}/>
+      <SectionHeader showSearch={Boolean(products.length)} title="Все кроссовки" search={search} onSearchInputHandler={onSearchInputHandler}/>
       <FetchStatus isLoading={isLoading} isError={isError}/>
-      {emptyDataCheck(isError, isLoading, products) && <ProductList favoritesButtonHandler={favoritesButtonHandler} products={filteredProducts} showAddButton={true} showAddFavoritesButton={true} />}
+      {emptyDataCheck(isError, isLoading, products) && <ProductList isFavorite={false} favoritesButtonHandler={favoritesButtonHandler} products={filteredProducts} showAddButton={true} showAddFavoritesButton={true} />}
     </div>
   )
 }

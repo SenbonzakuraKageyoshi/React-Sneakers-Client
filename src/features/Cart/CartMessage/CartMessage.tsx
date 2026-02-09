@@ -2,7 +2,7 @@ import CartTitle from '../CartTitle/CartTitle';
 import styles from './CartMessage.module.scss';
 import type { CartMessage } from './type';
 
-const CartMessage = ({ title, text, image, toggleIsOpened }: CartMessage) => {
+const CartMessage = ({ title, text, image, setCartIsOpened }: CartMessage) => {
   return (
     <div className={styles.cartMessage}>
         <img src={image} width={120} height={120} alt="" className="cartMessageImg" />
@@ -11,7 +11,7 @@ const CartMessage = ({ title, text, image, toggleIsOpened }: CartMessage) => {
         </div>
         <div className={styles.cartMessageText}>{text}</div>
         <div className={styles.cartMessageButtonWrapper}>
-          <button className="button" onClick={() => toggleIsOpened(false)}>
+          <button className="button" onClick={() => setCartIsOpened(false)}>
             Вернуться назад
           </button>
         </div>

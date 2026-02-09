@@ -5,4 +5,5 @@ export type ProductList = {
     showAddButton: boolean;
     showAddFavoritesButton: boolean;
     favoritesButtonHandler: (id: number) => void;
+    isFavorite: boolean;
 }

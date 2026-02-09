@@ -8,25 +8,24 @@ import CartProductList from '../../features/Cart/CartProductList/CartProductList
 import { useCart } from '../../hooks/useCart';
 import Loader from '../../shared/Loader/Loader';
 
-
 type Cart = {
-  toggleIsOpened: (value: boolean) => void;
+  setCartIsOpened: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Cart = ({ toggleIsOpened }: Cart) => {
+const Cart = ({ setCartIsOpened }: Cart) => {
 
   const { products, isSuccess, isLoading, isError, totalPrice, removeCartProduct, createOrder } = useCart();
 
   return (
     <>
-    <CartShadow toggleIsOpened={toggleIsOpened}/>
+    <CartShadow toggleIsOpened={setCartIsOpened}/>
     <div className={styles.cart}>
         <div className={styles.cartTitleWrapper}>
           <CartTitle title="Корзина"/>
         </div>
         {isError && <p>Error</p>}
         {isLoading && <Loader/>}
-        {isSuccess && <CartMessage toggleIsOpened={toggleIsOpened} {...cartVariants[1]}/>}
+        {isSuccess && <CartMessage setCartIsOpened={setCartIsOpened} {...cartVariants[1]}/>}
         {
           !isError && !isLoading && products.length
           ?
@@ -44,7 +43,7 @@ const Cart = ({ toggleIsOpened }: Cart) => {
             </div>
           </div>
           :
-          !isError && !isLoading && !isSuccess && <CartMessage toggleIsOpened={toggleIsOpened} {...cartVariants[0]}/>
+          !isError && !isLoading && !isSuccess && <CartMessage setCartIsOpened={setCartIsOpened} {...cartVariants[0]}/>
         }
     </div>
     </>

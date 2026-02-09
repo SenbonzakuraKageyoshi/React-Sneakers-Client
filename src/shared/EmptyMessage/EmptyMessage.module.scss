@@ -1,0 +1,30 @@
+.emptyMessage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    & a{
+        margin-top: 30px;
+    }
+}
+
+.emptyMessageTitle{
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.emptyMessageMessage{
+    margin-top: 10px;
+    color: var(--gray);
+}
+
+.emptyMessageLink{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 245px;
+    height: 55px;
+}

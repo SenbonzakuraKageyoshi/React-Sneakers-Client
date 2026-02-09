@@ -98,6 +98,19 @@
     position: absolute;
     top: 30px;
     left: 30px;
+    background: var(--pink);
+    border-color: var(--pink);
+
+    & svg{
+        stroke: var(--red);
+        fill: var(--red);
+    }
+}
+
+.productAddFavoritesActive{
+    position: absolute;
+    top: 30px;
+    left: 30px;
 
     background: var(--pink) !important;
     border-color: var(--pink) !important;

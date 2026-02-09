@@ -2,11 +2,17 @@ import styles from './ProductList.module.scss';
 import Product from '../Product/Product';
 import { type ProductList } from './types';
 
-const ProductList = ({ products, showAddButton, showAddFavoritesButton, favoritesButtonHandler }: ProductList) => {
+const ProductList = (props: ProductList) => {
   return (
     <ul className={styles.productsList}>
-      {products.map((el) => (
-        <Product {...el} showAddButton={showAddButton} showAddFavoritesButton={showAddFavoritesButton} favoritesButtonHandler={favoritesButtonHandler} key={el.id}/>
+      {props.products.map((el) => (
+        <Product {...el} 
+          isFavorite={props.isFavorite} 
+          showAddButton={props.showAddButton} 
+          showAddFavoritesButton={props.showAddFavoritesButton} 
+          favoritesButtonHandler={props.favoritesButtonHandler} 
+          key={el.id}
+        />
       ))}
     </ul>
   )
