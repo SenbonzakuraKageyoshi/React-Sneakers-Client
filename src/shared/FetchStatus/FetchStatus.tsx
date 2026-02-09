@@ -1,4 +1,4 @@
-import Loader from "../Loader/Loader"
+import ProductListLoader from "../ProductListSceleton/ProductListSceleton"
 
 type FetchStatus = {
     isLoading: boolean,
@@ -9,7 +9,7 @@ const FetchStatus = ({isLoading, isError}: FetchStatus) => {
   return (
       <>
       {isError && <p>Error</p>}
-      {isLoading && <Loader/>}
+      {isLoading && <ProductListLoader/>}
       </>
   )
 }

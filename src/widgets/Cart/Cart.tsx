@@ -6,7 +6,6 @@ import styles from './Cart.module.scss';
 import { cartVariants } from '../../entities/Cart/data';
 import CartProductList from '../../features/Cart/CartProductList/CartProductList';
 import { useCart } from '../../hooks/useCart';
-import Loader from '../../shared/Loader/Loader';
 
 type Cart = {
   setCartIsOpened: React.Dispatch<React.SetStateAction<boolean>>
@@ -24,7 +23,7 @@ const Cart = ({ setCartIsOpened }: Cart) => {
           <CartTitle title="Корзина"/>
         </div>
         {isError && <p>Error</p>}
-        {isLoading && <Loader/>}
+        {/* {isLoading && <Loader/>} */}
         {isSuccess && <CartMessage setCartIsOpened={setCartIsOpened} {...cartVariants[1]}/>}
         {
           !isError && !isLoading && products.length
