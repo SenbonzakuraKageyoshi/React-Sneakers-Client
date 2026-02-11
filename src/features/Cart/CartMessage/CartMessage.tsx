@@ -1,6 +1,12 @@
 import CartTitle from '../CartTitle/CartTitle';
 import styles from './CartMessage.module.scss';
-import type { CartMessage } from './type';
+
+type CartMessage = {
+    title: string;
+    text: string;
+    image: string;
+    setCartIsOpened: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 const CartMessage = ({ title, text, image, setCartIsOpened }: CartMessage) => {
   return (

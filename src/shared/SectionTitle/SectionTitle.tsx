@@ -1,5 +1,8 @@
-import { type SectionTitle } from './types';
 import styles from './SectionTitle.module.scss';
+
+type SectionTitle = {
+    title: string;
+}
 
 const SectionTitle = ({ title }: SectionTitle) => {
   return (

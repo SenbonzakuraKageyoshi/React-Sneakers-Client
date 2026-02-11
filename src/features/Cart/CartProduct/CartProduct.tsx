@@ -2,7 +2,6 @@ import styles from './CartProduct.module.scss';
 import CartProductPreview from '../../../assets/png/product.png';
 import { type Product } from '../../../shared/types/Product';
 import { formatPrice } from '../../../shared/utils/formatPrice';
-import { cartService } from '../../../service/CartService/CartService';
 
 type CartProductFunctions = {
     removeCartProduct: (id: number) => void;

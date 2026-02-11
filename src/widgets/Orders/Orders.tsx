@@ -22,7 +22,7 @@ const Orders = () => {
     ))
     }
     {
-    dataIsFulfilled && Boolean(orders.length)
+    dataIsFulfilled && !Boolean(orders.length)
     &&
     <EmptyMessage title="Заказов нет :(" message="Вы еще не совершали заказы" />
     }

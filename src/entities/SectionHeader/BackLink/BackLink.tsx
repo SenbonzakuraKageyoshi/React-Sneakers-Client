@@ -1,6 +1,5 @@
 import styles from './BackLink.module.scss';
 
-
 const BackLink = () => {
   return (
     <button className={styles.backLink} onClick={() => window.history.back()}>

@@ -1,13 +1,16 @@
 import styles from './SectionHeader.module.scss';
-import { type SectionHeader } from './types';
 import SectionTitle from '../../shared/SectionTitle/SectionTitle';
 import Search from './Search/Search';
 import BackLink from './BackLink/BackLink';
 
-const SectionHeader = ({ title, search, onSearchInputHandler, showSearch }: SectionHeader) => {
+type SectionHeader = {
+    title: string;
+    search?: string;
+    onSearchInputHandler?: (value: string) => void;
+    showSearch: boolean;
+}
 
-  console.log(showSearch);
-  
+const SectionHeader = ({ title, search, onSearchInputHandler, showSearch }: SectionHeader) => {
   return (
     <div className={styles.sectionHeader}>
         <div className={styles.sectionHeaderTitleWrapper}>

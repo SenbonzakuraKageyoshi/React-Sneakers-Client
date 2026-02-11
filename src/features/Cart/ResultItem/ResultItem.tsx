@@ -1,7 +1,10 @@
 import styles from './ResultItem.module.scss';
-import type { ResultItem } from './types';
 import { formatPrice } from '../../../shared/utils/formatPrice';
 
+type ResultItem = {
+    name: string;
+    value: number;
+}
 
 const ResultItem = ({ name, value }: ResultItem) => {
   return (
